@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fokko/theme/app_theme.dart';
+import 'package:fokko/ui/screen/home_screen.dart';
 
 import 'flavors.dart';
-import 'pages/my_home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -14,7 +14,7 @@ class App extends StatelessWidget {
       title: F.title,
       debugShowCheckedModeBanner: F.appFlavor == Flavor.dev,
       theme: AppTheme.light,
-      home: _flavorBanner(child: MyHomePage(), show: kDebugMode),
+      home: _flavorBanner(child: HomeScreen(), show: kDebugMode),
     );
   }
 
