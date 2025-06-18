@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fokko/models/timer_mode.dart';
 import 'package:fokko/ui/components/timer_controls.dart';
+import 'package:fokko/ui/components/timer_display.dart';
 import 'package:fokko/viewmodel/timer_viewmodel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -34,9 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ValueListenableBuilder(
             valueListenable: _viewmodel.state,
             builder: (_, state, __) {
-              final minutes = state.remainingTime.inMinutes.remainder(60).toString().padLeft(2, '0');
-              final seconds = state.remainingTime.inSeconds.remainder(60).toString().padLeft(2, '0');
-
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 32,
@@ -45,12 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     state.mode.label,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  Text(
-                    '$minutes:$seconds',
-                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
+                  TimerDisplay(remaingingTime: state.remainingTime),
                   TimerControls(viewmodel: _viewmodel),
                   Wrap(
                     spacing: 12,
