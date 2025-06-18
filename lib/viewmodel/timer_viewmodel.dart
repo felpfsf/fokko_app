@@ -14,7 +14,6 @@ class TimerViewmodel {
     final notifier = ValueNotifier<TimerState>(initial);
     final service = TimerService(
       onTick: (remainingTime) {
-        debugPrint('Remaining time tick: $remainingTime');
         final isFinished = remainingTime <= Duration.zero;
         notifier.value = notifier.value.copyWith(
           remainingTime: remainingTime,

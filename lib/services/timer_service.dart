@@ -15,15 +15,6 @@ class TimerService {
   });
 
   void start(Duration duration) {
-    if (_timer?.isActive ?? false) {
-      debugPrint('Timer is already running');
-      return;
-    }
-    if (duration <= Duration.zero) {
-      debugPrint('Invalid duration: $duration');
-      return;
-    }
-    debugPrint('Starting timer for duration: $duration');
     _remainingTime = duration;
     _timer?.cancel();
 
