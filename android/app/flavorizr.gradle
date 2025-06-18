@@ -1,0 +1,16 @@
+android {
+    flavorDimensions += "app"
+
+    productFlavors {
+        dev {
+            dimension "app"
+            applicationId "dev.fokko.dev"
+            resValue "string", "app_name", "Fokko Dev"
+        }
+        prod {
+            dimension "app"
+            applicationId "dev.fokko"
+            resValue "string", "app_name", "Fokko"
+        }
+    }
+}

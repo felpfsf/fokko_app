@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Fokko (dev)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--flavor", 
+        "dev", 
+        "--dart-define=app.flavor=dev"
+      ]
+    },
+    {
+      "name": "Fokko (prod)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--flavor", 
+        "prod", 
+        "--dart-define=app.flavor=prod"
+      ]
+    }
+  ]
+}
