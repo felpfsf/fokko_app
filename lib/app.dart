@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fokko/theme/app_theme.dart';
 
 import 'flavors.dart';
 import 'pages/my_home_page.dart';
@@ -12,7 +13,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: F.title,
       debugShowCheckedModeBanner: F.appFlavor == Flavor.dev,
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: AppTheme.light,
       home: _flavorBanner(child: MyHomePage(), show: kDebugMode),
     );
   }
