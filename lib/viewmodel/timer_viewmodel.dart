@@ -14,10 +14,16 @@ class TimerViewmodel {
     final notifier = ValueNotifier<TimerState>(initial);
     final service = TimerService(
       onTick: (remainingTime) {
-        final isFinished = remainingTime <= Duration.zero;
+        if (remainingTime <= Duration.zero) {
+          notifier.value = notifier.value.copyWith(
+            status: TimerStatus.idle,
+            remainingTime: notifier.value.mode.duration,
+          );
+          return;
+        }
         notifier.value = notifier.value.copyWith(
           remainingTime: remainingTime,
-          status: isFinished ? TimerStatus.idle : notifier.value.status,
+          // status: remainingTime <= Duration.zero ? TimerStatus.idle : notifier.value.status,
         );
       },
     );

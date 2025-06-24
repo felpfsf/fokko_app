@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fokko/models/timer_mode.dart';
+import 'package:fokko/models/timer_state.dart';
+import 'package:fokko/ui/components/session_end_notifier.dart';
 import 'package:fokko/ui/components/timer_controls.dart';
 import 'package:fokko/ui/components/timer_display.dart';
 import 'package:fokko/viewmodel/timer_viewmodel.dart';
@@ -13,11 +15,23 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late final TimerViewmodel _viewmodel;
+  TimerStatus? _lastStatus;
 
   @override
   void initState() {
     super.initState();
     _viewmodel = TimerViewmodel();
+    _lastStatus = _viewmodel.state.value.status;
+    _viewmodel.state.addListener(_handleStatusChange);
+  }
+
+  void _handleStatusChange() {
+    final current = _viewmodel.state.value.status;
+    if (_lastStatus == TimerStatus.running && current == TimerStatus.idle) {
+      SessionEndNotifier.show(context);
+    }
+
+    _lastStatus = current;
   }
 
   @override

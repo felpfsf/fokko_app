@@ -20,11 +20,11 @@ enum TimerMode {
   Duration get duration {
     switch (this) {
       case TimerMode.focus:
-        return const Duration(minutes: 25);
+        return const Duration(seconds: 5);
       case TimerMode.shortBreak:
-        return const Duration(minutes: 5);
+        return const Duration(seconds: 5);
       case TimerMode.longBreak:
-        return const Duration(minutes: 15);
+        return const Duration(seconds: 5);
     }
   }
 
