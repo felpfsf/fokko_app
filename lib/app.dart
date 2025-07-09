@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fokko/core/utils/theme_controller.dart';
 import 'package:fokko/theme/app_theme.dart';
 import 'package:fokko/ui/screen/home_screen.dart';
 
@@ -10,11 +11,18 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: F.title,
-      debugShowCheckedModeBanner: F.appFlavor == Flavor.dev,
-      theme: AppTheme.light,
-      home: _flavorBanner(child: HomeScreen(), show: kDebugMode),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: ThemeModeController.notifier,
+      builder: (_, themeMode, __) {
+        return MaterialApp(
+          title: F.title,
+          debugShowCheckedModeBanner: F.appFlavor == Flavor.dev, 
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          themeMode: themeMode,
+          home: _flavorBanner(child: HomeScreen(), show: kDebugMode),
+        );
+      },
     );
   }
 
