@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fokko/models/timer_mode.dart';
 import 'package:fokko/models/timer_state.dart';
 import 'package:fokko/ui/components/session_end_notifier.dart';
+import 'package:fokko/ui/components/theme_switch_widget.dart';
 import 'package:fokko/ui/components/timer_controls.dart';
 import 'package:fokko/ui/components/timer_display.dart';
 import 'package:fokko/viewmodel/timer_viewmodel.dart';
@@ -44,6 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        actions: [ThemeSwitchWidget()],
+      ),
       body: SafeArea(
         child: Center(
           child: ValueListenableBuilder(
