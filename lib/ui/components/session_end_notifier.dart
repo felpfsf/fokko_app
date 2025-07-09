@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fokko/theme/app_colors.dart';
 
 class SessionEndNotifier {
   static void show(BuildContext context) {
@@ -75,12 +74,13 @@ class __FlashOverlayState extends State<_FlashOverlay> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return IgnorePointer(
       child: AnimatedOpacity(
         opacity: _opacityValue,
         duration: const Duration(milliseconds: 150),
         child: Container(
-          color: AppColors.primaryColor,
+          color: colorScheme.primary,
         ),
       ),
     );

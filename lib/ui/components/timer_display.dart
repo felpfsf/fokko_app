@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fokko/theme/app_colors.dart';
 
 class TimerDisplay extends StatelessWidget {
   final Duration remaingingTime;
@@ -11,6 +10,7 @@ class TimerDisplay extends StatelessWidget {
     final minutes = remaingingTime.inMinutes.remainder(60).toString().padLeft(2, '0');
     final seconds = remaingingTime.inSeconds.remainder(60).toString().padLeft(2, '0');
     final timeText = '$minutes:$seconds';
+    final colorScheme = Theme.of(context).colorScheme;
 
     return /* TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.95, end: 1.0),
@@ -29,7 +29,7 @@ class TimerDisplay extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(vertical: 32),
       decoration: BoxDecoration(
-        color: AppColors.backgroundColor,
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -39,14 +39,14 @@ class TimerDisplay extends StatelessWidget {
           )
         ],
         border: Border.all(
-          color: AppColors.primaryColor.withValues(alpha: 0.3),
+          color: colorScheme.primary.withValues(alpha: 0.3),
           width: 2,
         ),
       ),
       child: Text(
         timeText,
         style: Theme.of(context).textTheme.displayMedium?.copyWith(
-              color: AppColors.textDark,
+              color: colorScheme.onSurface,
               fontWeight: FontWeight.bold,
             ),
       ),
