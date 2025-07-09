@@ -3,23 +3,25 @@ import 'package:fokko/theme/app_colors.dart';
 import 'package:fokko/theme/app_typography.dart';
 
 class AppTheme {
-  static ThemeData get light {
-    return ThemeData(
-      useMaterial3: true,
-      scaffoldBackgroundColor: AppColors.backgroundColor,
-      primaryColor: AppColors.primaryColor,
-      textTheme: TextTheme(
-        titleLarge: AppTypography.title,
-        bodyMedium: AppTypography.body,
-        labelSmall: AppTypography.label,
-      ),
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.primaryColor,
-        primary: AppColors.primaryColor,
-        secondary: AppColors.secondaryColor,
-        surface: AppColors.backgroundColor,
-        brightness: Brightness.light,
-      ),
-    );
-  }
+  static ThemeData get light => ThemeData(
+        useMaterial3: true,
+        scaffoldBackgroundColor: AppColors.lightBackground,
+        colorScheme: ColorScheme.light(
+          primary: AppColors.lightPrimary,
+          secondary: AppColors.lightSecondary,
+          surface: AppColors.lightBackground,
+        ),
+        textTheme: AppTypography.light,
+      );
+
+  static ThemeData get dark => ThemeData(
+        useMaterial3: true,
+        scaffoldBackgroundColor: AppColors.darkBackground,
+        colorScheme: ColorScheme.dark(
+          primary: AppColors.darkPrimary,
+          secondary: AppColors.darkSecondary,
+          surface: AppColors.darkBackground,
+        ),
+        textTheme: AppTypography.dark,
+      );
 }
